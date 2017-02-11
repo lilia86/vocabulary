@@ -31,6 +31,7 @@ class UserController extends Controller
             $this->get('security.token_storage')->setToken($token);
 
             $this->get('session')->set('_security_main', serialize($token));
+            $this->get('session')->set('_locale', $user->getLocale());
 
             return $this->redirectToRoute('homepage');
         }

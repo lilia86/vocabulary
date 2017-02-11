@@ -1,0 +1,14 @@
+homepage:
+    lable: Твой словарь
+    navigation:
+        login: Вход
+        logout: Выход
+        registration: Регистрация
+        update: Обновить свой профайл
+        hi: Привет
+    nav_menu:
+         home: Главная
+         create_wish_list: Создать свой список
+         update_wish_list: Обновить свой список
+         slider: Слайдер
+         create_word: Добавить новое слово

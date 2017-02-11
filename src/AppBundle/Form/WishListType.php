@@ -26,7 +26,7 @@ class WishListType extends AbstractType
                 },
                 'choice_label' => 'translations['.$locale.'].getName',
                 'multiple' => true,
-                'expanded' => true,
+                'attr' => ['class' => "selectpicker"]
 
             ))
             ;

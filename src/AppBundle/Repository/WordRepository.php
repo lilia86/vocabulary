@@ -23,6 +23,7 @@ class WordRepository extends EntityRepository
         return $paginator;
     }
 
+
     public function paginate($dql, $page = 1, $limit = 5)
     {
         if ($page === null) {

@@ -1,0 +1,14 @@
+homepage:
+    lable: Dein Vokabular
+    navigation:
+        login: Einloggen
+        logout: Abmelden
+        registration: Registrierung
+        update: Aktualisieren Sie Ihr Profil
+        hi: Hallo
+    nav_menu:
+         home: zu Hause
+         create_wish_list: Wunschliste anlegen
+         update_wish_list: Liste aktualisieren
+         slider: Slider
+         create_word: Neues Wort hinzufügen

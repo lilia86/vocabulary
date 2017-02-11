@@ -50,12 +50,10 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
-            "@symfony-scripts",
-            "npm i"
+            "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts",
-            "npm i"
+            "@symfony-scripts"
         ]
     },
     "extra": {

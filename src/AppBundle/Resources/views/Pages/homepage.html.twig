@@ -107,10 +107,12 @@
                         <li><a href="{{ path('homepage') }}"  class="active">{{ 'homepage.nav_menu.home'|trans }}</a></li>
                         {% if app.user.getWishList %}
                         <li><a href="{{ path('wish_list_update') }}">{{ 'homepage.nav_menu.update_wish_list'|trans }}</a></li>
+                        <li><a href="{{ path('slider') }}">{{ 'homepage.nav_menu.slider'|trans }}</a></li>
                         {% else %}
                         <li><a href="{{ path('wish_list') }}">{{ 'homepage.nav_menu.create_wish_list'|trans }}</a></li>
                         {% endif %}
-                        <li><a href="{{ path('slider') }}">{{ 'homepage.nav_menu.slider'|trans }}</a></li>
+                        <li><a href="{{ path('word_new') }}">{{ 'homepage.nav_menu.create_word'|trans }}</a></li>
+
                     </ul>
                 </div>
                 <div class="clearfix"></div>
@@ -150,25 +152,50 @@
                             <li>{{ word.translate('uk').getName }}</li>
                         </ul>
                         {% endfor %}
-                        {% if maxPages > 1 %}
-                            <ul class="pagination pagination-sm" style="margin-top: 10%; margin-left: 45%">
+                        {% if  (maxPages-thisPage) < 5 %}
+                            <ul class="pagination pagination-sm" style="margin-top: 10%; margin-left: 35%">
                                 <li {{ thisPage == 1 ? 'class="disabled"' }}>
-                                    <a href="{{ path(app.request.attributes.get('_route'), { page: thisPage-1 < 1 ? 1 : thisPage-1 }) }}">«</a>
+                                    <a href="{{ path(app.request.attributes.get('_route'), { page: thisPage-4 }) }}">«</a>
                                 </li>
-
-
-                                {% for i in 1..maxPages %}
+                                {% for i in thisPage..maxPages %}
                                     <li {{ thisPage == i ? 'class="active"' }}>
                                         <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
                                     </li>
                                 {% endfor %}
 
 
+                            </ul>
+                        {% elseif maxPages > 1 %}
+                            <ul class="pagination pagination-sm" style="margin-top: 10%; margin-left: 35%">
+                                <li {{ thisPage == 1 ? 'class="disabled"' }}>
+                                    <a href="{{ path(app.request.attributes.get('_route'), { page: thisPage-1 < 1 ? 1 : thisPage-1 }) }}">«</a>
+                                </li>
+
+
+                                {% for i in thisPage..(thisPage+3) %}
+                                    <li {{ thisPage == i ? 'class="active"' }}>
+                                        <a href="{{ path(app.request.attributes.get('_route'), { page: i }) }}">{{ i }}</a>
+                                    </li>
+                                {% endfor %}
+                                <li>
+                                    <a href="#">...</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path(app.request.attributes.get('_route'), { page: thisPage + ((maxPages-thisPage)/2)|round}) }}">{{ thisPage + ((maxPages-thisPage)/2)|round }}</a>
+                                </li>
+                                <li>
+                                    <a href="#">...</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path(app.request.attributes.get('_route'), { page: maxPages }) }}">{{ maxPages }}</a>
+                                </li>
+
                                 <li {{ thisPage == maxPages ? 'class="disabled"' }}>
                                     <a href="{{ path(app.request.attributes.get('_route'), { page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
                                 </li>
                             </ul>
                         {% endif %}
+
                     </div>
                 </div>
             </div>

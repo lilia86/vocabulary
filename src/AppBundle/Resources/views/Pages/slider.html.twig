@@ -107,17 +107,17 @@
     <div class="header-top">
         <div class="container">
             <div class="head-main">
-                <div style="font-size: 50px;font-family:'Open Sans',sans-serif,arial,helvetica,verdana"><a href="{{ path('homepage') }}">Your Dictionary</a></div>
+                <div style="font-size: 50px;font-family:'Open Sans',sans-serif,arial,helvetica,verdana"><a href="{{ path('homepage') }}">{{ 'homepage.lable'|trans }}</a></div>
                 <div style="position:absolute; top: 10px; right: 10%; text-align: left">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <p>Hi {{ app.user.username }}</p>
+                        <p>{{ 'homepage.navigation.hi'|trans }} {{ app.user.username }}</p>
                         {% if is_granted('ROLE_ADMIN') == false %}
-                            <a href="{{ path('user_update', {'id': app.user.getId}) }}">Update your profile</a><br/>
+                            <a href="{{ path('user_update', {'id': app.user.getId}) }}">{{ 'homepage.navigation.update'|trans }}</a><br/>
                         {% endif %}
-                        <a href="{{ path('logout') }}">Log out</a>
+                        <a href="{{ path('logout') }}">{{ 'homepage.navigation.logout'|trans }}</a>
                     {% else %}
-                        <a href="{{ path('login') }}">Log in</a><br/>
-                        <a href="{{ path('registry') }}">Registration</a><br/>
+                        <a href="{{ path('login') }}">{{ 'homepage.navigation.login'|trans }}</a><br/>
+                        <a href="{{ path('user_new') }}">{{ 'homepage.navigation.registration'|trans }}</a><br/>
                     {% endif %}
 
                 </div>
@@ -138,10 +138,11 @@
                             <li><a href="{{ path('homepage') }}"  class="active">{{ 'homepage.nav_menu.home'|trans }}</a></li>
                             {% if app.user.getWishList %}
                                 <li><a href="{{ path('wish_list_update') }}">{{ 'homepage.nav_menu.update_wish_list'|trans }}</a></li>
+                                <li><a href="{{ path('slider') }}">{{ 'homepage.nav_menu.slider'|trans }}</a></li>
                             {% else %}
                                 <li><a href="{{ path('wish_list') }}">{{ 'homepage.nav_menu.create_wish_list'|trans }}</a></li>
                             {% endif %}
-                            <li><a href="{{ path('slider') }}">{{ 'homepage.nav_menu.slider'|trans }}</a></li>
+
                         </ul>
                     </div>
                     <div class="clearfix"></div>

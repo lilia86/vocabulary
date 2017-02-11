@@ -1,25 +1,14 @@
 {% extends 'AppBundle:Pages:homepage.html.twig' %}
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-        .container form{
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        .checkbox{
-            width: 200px;
-            float:left;
-        }
-    </style>
-{% endblock %}
 
 {% block body %}
     <div class="single">
     <div class="container">
         <div class="comment-bottom heading" style="clear: both">
             {{ form_start(form) }}
-            {{ form_widget(form) }}
+            <ul>
+            {{ for row in form_row(form.words) }}
+                <li styly="display: inline">row</li>
+            </ul>
             <input type="submit" value="Submit" class="btn btn-default pull-right" />
             {{ form_end(form) }}
         </div>
