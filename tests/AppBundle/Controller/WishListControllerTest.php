@@ -34,7 +34,10 @@ class WishListControllerTest extends BaseTestSetup
 
         $client = $this->makeClient();
 
-        $crawler = $client->request('GET', '/wish_list/create');
+        $crawler = $client->request('GET', '/wish_list/update', array(), array(), array(
+            'PHP_AUTH_USER' => 'test1',
+            'PHP_AUTH_PW'   => 'test1',
+        ));
 
         $this->assertStatusCode(200, $client);
 

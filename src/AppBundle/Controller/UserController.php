@@ -44,15 +44,14 @@ class UserController extends Controller
     /**
      * Update a user entity.
      *
-     * @Route("/user/update/{id}", name="user_update")
+     * @Route("/user/update", name="user_update")
      * @Method({"GET", "POST"})
      * @ParamConverter("user", class="AppBundle:User")
      */
-    public function updateUserAction(Request $request, User $user)
+    public function updateUserAction(Request $request)
     {
-        if ($this->getUser() !== $user) {
-            throw $this->createAccessDeniedException();
-        }
+        $user = $this->getUser();
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
