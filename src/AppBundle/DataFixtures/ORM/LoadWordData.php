@@ -69,6 +69,10 @@ class LoadWordData extends AbstractFixture implements OrderedFixtureInterface
 
         $manager->flush();
 
+        $this->addReference('word1', $words_array[0]);
+        $this->addReference('word2', $words_array[1]);
+        $this->addReference('word3', $words_array[2]);
+
     }
 
     public function getOrder()
